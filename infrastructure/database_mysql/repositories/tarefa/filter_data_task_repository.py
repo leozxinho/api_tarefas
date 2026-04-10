@@ -1,18 +1,18 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.entities.dto.request.tarefa_request import FiltroTarefaData
-from app.entities.models.tarefa_model import TarefaModel
+from app.entities.dto.request.task_request import FilterTaskData
+from app.entities.models.task_model import TaskModel
 
-class FiltroTarefaDataRepository:
+class TaskFilterDataRepository:
     def __init__(self, session: AsyncSession):
         self.session = session
         
-    async def filtro_tarefa_data(self, filtro: FiltroTarefaData):
-        query = select(TarefaModel)
+    async def filtro_tarefa_data(self, filtro: FilterTaskData):
+        query = select(TaskModel)
         
         i = {
-            "data_inicio": (TarefaModel.data_tarefa, ">="),
-            "data_fim": (TarefaModel.data_tarefa, "<="),
+            "data_inicio": (TaskModel.data_tarefa, ">="),
+            "data_fim": (TaskModel.data_tarefa, "<="),
         }
         for j, (coluna, operador) in i.items():
             z = getattr(filtro, j)

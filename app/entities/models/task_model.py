@@ -3,7 +3,7 @@ from sqlalchemy import Index, String, DateTime, func
 from sqlalchemy.orm import Mapped, mapped_column
 from infrastructure.database_mysql.mysql_connection import Base
 
-class TarefaModel(Base):
+class TaskModel(Base):
     __tablename__ = "tarefas"
     __table_args__ = (
         Index('idx_tarefas_titulo', "titulo"),

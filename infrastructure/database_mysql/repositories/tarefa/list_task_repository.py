@@ -1,11 +1,11 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.entities.models.tarefa_model import TarefaModel
+from app.entities.models.task_model import TaskModel
 
-class ListarTarefaRepository:
+class ListTaskRepository:
     def __init__(self, session: AsyncSession):
         self.session = session
 
     async def listar_tarefas_all(self):
-        result = await self.session.execute(select(TarefaModel))
+        result = await self.session.execute(select(TaskModel))
         return result.scalars().all()

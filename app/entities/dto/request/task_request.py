@@ -2,20 +2,20 @@ from datetime import datetime
 from pydantic import BaseModel
 from typing import Optional
 
-class Tarefa(BaseModel):
+class Task(BaseModel):
     id: Optional[int] = None
     titulo: str
     descricao: str
     concluido: bool = False
     
-class TarefaUpdate(BaseModel):
+class TaskUpdate(BaseModel):
     titulo: str
     descricao: str
     concluido: bool
     
-class TarefaDelete(BaseModel):
+class TaskDelete(BaseModel):
     id: int
 
-class FiltroTarefaData(BaseModel):
+class FilterTaskData(BaseModel):
     data_inicio: Optional[datetime] = None
     data_fim: Optional[datetime] = None

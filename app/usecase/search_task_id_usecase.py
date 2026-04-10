@@ -1,10 +1,10 @@
 from fastapi import HTTPException
 
-from infrastructure.database_mysql.repositories.tarefa.buscar_tarefa_id_repository import BuscarTarefaIDRepository
+from infrastructure.database_mysql.repositories.tarefa.search_task_id_repository import SearchTaskIDRepository
 
 
-class BuscarTarefaIDUsecase:
-    def __init__(self, repository: BuscarTarefaIDRepository):
+class SearchTaskIDUsecase:
+    def __init__(self, repository: SearchTaskIDRepository):
         self.repository = repository
         
     async def execute(self, id: int):

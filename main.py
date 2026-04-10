@@ -1,4 +1,4 @@
-from app.controllers import tarefas_controller
+from app.controllers import task_controller
 from fastapi import FastAPI
 
 app = FastAPI(
@@ -14,4 +14,4 @@ Api para gerenciamento de TAREFAS!
 )
 
 
-app.include_router(tarefas_controller.router)
+app.include_router(task_controller.router)

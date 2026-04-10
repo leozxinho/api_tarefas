@@ -4,7 +4,7 @@ from pydantic import BaseModel, ConfigDict
 
 
 
-class TarefasResponse(BaseModel):
+class TaskResponse(BaseModel):
     id: int
     titulo: str | None
     descricao: str | None
@@ -16,6 +16,6 @@ class TarefasResponse(BaseModel):
         
         
     
-class TarefaCreate(BaseModel):
+class TaskCreate(BaseModel):
     titulo: str
     descricao: Optional[str] = None

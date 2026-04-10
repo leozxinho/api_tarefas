@@ -1,16 +1,16 @@
 from sqlalchemy import insert
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.entities.dto.response.tarefas_response import TarefasResponse
-from app.entities.models.tarefa_model import TarefaModel
+from app.entities.dto.response.task_response import TaskResponse
+from app.entities.models.task_model import TaskModel
 
 
 
-class CriarTarefaRepository:
+class CreateTaskRepository:
     def __init__(self, session: AsyncSession):
         self.session = session 
         
-    async def criar_tarefa(self, tarefa_model: TarefasResponse):
-        new = TarefaModel(
+    async def criar_tarefa(self, tarefa_model: TaskResponse):
+        new = TaskModel(
             titulo=tarefa_model.titulo,
             descricao=tarefa_model.descricao,
         )
