@@ -7,7 +7,7 @@ app = FastAPI(
     description="""
 Api para gerenciamento de TAREFAS!
 
-<a href="https://github.com/seu-user/seu-repo/blob/main/README.md" target="_blank">
+<a href="https://github.com/leozxinho/api_tarefas/blob/main/README.md" target="_blank">
 👉 Ver documentação completa (README.md)
 </a>
 """
