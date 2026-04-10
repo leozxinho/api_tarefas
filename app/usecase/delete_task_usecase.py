@@ -1,7 +1,7 @@
 
 
 from app.entities.dto.request.task_request import Task
-from infrastructure.database_mysql.repositories.tarefa.delete_task_repository import DeleteTaskRepository
+from infrastructure.database_mysql.repositories.task.delete_task_repository import DeleteTaskRepository
 
 
 class DeleteTaskUsecase:

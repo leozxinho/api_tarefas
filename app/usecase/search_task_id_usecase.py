@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 
-from infrastructure.database_mysql.repositories.tarefa.search_task_id_repository import SearchTaskIDRepository
+from infrastructure.database_mysql.repositories.task.search_task_id_repository import SearchTaskIDRepository
 
 
 class SearchTaskIDUsecase:

@@ -1,5 +1,5 @@
 from app.entities.dto.request.task_request import Task
-from infrastructure.database_mysql.repositories.tarefa.update_task_repository import UpdateTaskRepository
+from infrastructure.database_mysql.repositories.task.update_task_repository import UpdateTaskRepository
 
 
 class UpdateTaskUsecase:

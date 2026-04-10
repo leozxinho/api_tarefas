@@ -1,5 +1,5 @@
 from app.entities.dto.response.task_response import TaskResponse
-from infrastructure.database_mysql.repositories.tarefa.create_task_repository import CreateTaskRepository
+from infrastructure.database_mysql.repositories.task.create_task_repository import CreateTaskRepository
 
 
 class CreateTaskUsecase:

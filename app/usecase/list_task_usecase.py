@@ -1,4 +1,4 @@
-from infrastructure.database_mysql.repositories.tarefa.list_task_repository import ListTaskRepository
+from infrastructure.database_mysql.repositories.task.list_task_repository import ListTaskRepository
 
 class ListTaskUsecase:
     def __init__(self, repository: ListTaskRepository):
