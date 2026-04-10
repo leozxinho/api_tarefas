@@ -1,7 +1,7 @@
 from sqlalchemy import insert
 from sqlalchemy.ext.asyncio import AsyncSession
-from domain.entities.dto.response.tarefas_response import TarefasResponse
-from domain.entities.models.tarefa import TarefaModel
+from app.entities.dto.response.tarefas_response import TarefasResponse
+from app.entities.models.tarefa_model import TarefaModel
 
 
 

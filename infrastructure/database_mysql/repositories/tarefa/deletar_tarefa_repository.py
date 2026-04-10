@@ -1,6 +1,6 @@
 from sqlalchemy import delete, select
 from sqlalchemy.ext.asyncio import AsyncSession
-from domain.entities.models.tarefa import TarefaModel
+from app.entities.models.tarefa_model import TarefaModel
 
 class DeletarTarefaRepository:
     def __init__(self, session: AsyncSession):
