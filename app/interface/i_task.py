@@ -2,7 +2,7 @@
 from abc import ABC, abstractmethod
 from app.entities.dto.request.task_request import Task
 
-class ITarefaRepository(ABC):
+class ITaskRepository(ABC):
 
     @abstractmethod
     def create(self, tarefa: Task) -> Task: ...
