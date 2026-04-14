@@ -17,7 +17,7 @@ DATABASE_URL = "{driver}://{user}:{password}@{host}:{port}/{db}".format(
 )
 engine = create_async_engine(
     DATABASE_URL,
-    echo=True,
+    echo=False,
 )
 
 AsyncSessionLocal = async_sessionmaker(
