@@ -17,6 +17,3 @@ venv/
 alembic.ini
 alembic/
 
-# OS
-.DS_Store
-Thumbs.db
