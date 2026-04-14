@@ -1,5 +1,22 @@
-**__pycache__
-venv
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+
+# Environment variables
 .env
+
+# VSCode
+.vscode/
+
+# Alembic (depende do seu uso)
 alembic.ini
-alembic
+alembic/
+
+# OS
+.DS_Store
+Thumbs.db
