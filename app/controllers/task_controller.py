@@ -2,13 +2,11 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List
 
+from app.dependencies import get_repository
 from app.entities.dto.response.task_response import TaskCreate, TaskResponse
 from app.entities.dto.request.task_request import FilterTaskData, TaskUpdate
 from app.usecase.task_usecase import CreateTaskUsecase, DeleteTaskUsecase, FilterTaskDataUsecase, ListTaskUsecase, SearchTaskIDUsecase, UpdateTaskUsecase
 from infrastructure.database_mysql.mysql_connection import get_session
-
-from infrastructure.database_mysql.repositories.task.task_repository  import TaskRepository
-
 
 
 
@@ -23,16 +21,16 @@ router = APIRouter(
 
 # Listar todas as tarefas
 @router.get("/tarefas", response_model=List[TaskResponse])
-async def listar_tarefas(session: AsyncSession = Depends(get_session)):
-   repository = TaskRepository(session)
+async def list_task(session: AsyncSession = Depends(get_session)):
+   repository = get_repository(session)
    usecase = ListTaskUsecase(repository)
    tarefa = await usecase.execute()
    return tarefa
 
 #Buscar tarefas por data
 @router.get("/tarefas/data", response_model=List[TaskResponse])
-async def filtrar_tarefa_data(filtro: FilterTaskData = Depends(), session: AsyncSession = Depends(get_session)):
-    repository = TaskRepository(session)
+async def filter_task(filtro: FilterTaskData = Depends(), session: AsyncSession = Depends(get_session)):
+    repository = get_repository(session)
     usecase = FilterTaskDataUsecase(repository)
     tarefa = await usecase.execute(filtro)
     return tarefa
@@ -40,8 +38,8 @@ async def filtrar_tarefa_data(filtro: FilterTaskData = Depends(), session: Async
 
 # Buscar tarefa por ID
 @router.get("/tarefas/{id}", response_model=TaskResponse)
-async def buscar_tarefa_id(id: int, session: AsyncSession = Depends(get_session)):
-    repository = TaskRepository(session)
+async def search_by_id(id: int, session: AsyncSession = Depends(get_session)):
+    repository = get_repository(session)
     usecase = SearchTaskIDUsecase(repository)
     tarefa = await usecase.execute(id)
     return tarefa
@@ -49,8 +47,8 @@ async def buscar_tarefa_id(id: int, session: AsyncSession = Depends(get_session)
     
 # Criar uma nova tarefa
 @router.post("/tarefas", response_model=TaskResponse)
-async def criar_tarefa(tarefa_model: TaskCreate, session: AsyncSession = Depends(get_session)):
-    repository = TaskRepository(session)
+async def create(tarefa_model: TaskCreate, session: AsyncSession = Depends(get_session)):
+    repository = get_repository(session)
     usecase = CreateTaskUsecase(repository)
     tarefa = await usecase.execute(tarefa_model)
     return tarefa
@@ -58,8 +56,8 @@ async def criar_tarefa(tarefa_model: TaskCreate, session: AsyncSession = Depends
                                        
 # Atualizar uma tarefa existente
 @router.put("/tarefas/{id}", response_model=TaskResponse)
-async def atualizar_tarefa_id(id: int, tarefa_data: TaskUpdate, session: AsyncSession = Depends(get_session)):
-    repository = TaskRepository(session)
+async def update(id: int, tarefa_data: TaskUpdate, session: AsyncSession = Depends(get_session)):
+    repository = get_repository(session)
     usecase = UpdateTaskUsecase(repository) 
     tarefa = await usecase.execute(id, tarefa_data)
     return tarefa
@@ -67,8 +65,8 @@ async def atualizar_tarefa_id(id: int, tarefa_data: TaskUpdate, session: AsyncSe
 
 # Excluir uma tarefa
 @router.delete("/tarefas/{id}", status_code=200)
-async def excluir_tarefa_id(id: int, session: AsyncSession = Depends(get_session)):
-    repository = TaskRepository(session)
+async def delete(id: int, session: AsyncSession = Depends(get_session)):
+    repository = get_repository(session)
     usecase = DeleteTaskUsecase(repository)
     await usecase.execute(id)
     return {"detail": "Tarefa excluída com sucesso."}

@@ -7,7 +7,7 @@ from app.interface.i_task import ITaskRepository
 from infrastructure.database_mysql.task_model import TaskModel
 
 
-class TaskRepository(ITaskRepository):
+class get_repository(ITaskRepository):
     def __init__(self, session: AsyncSession):
         self.session = session
 
