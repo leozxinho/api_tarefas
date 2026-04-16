@@ -34,10 +34,10 @@ Base URL: `/api/v1`
 
 **Query Params:**
 
-| Param | Tipo | Obrigatório |
+| Param | Tipo
 |---|---|---|
-| `data_inicio` | string (YYYY-MM-DD) | Não |
-| `data_fim` | string (YYYY-MM-DD) | Não |
+| `data_inicio` | string (YYYY-MM-DD)
+| `data_fim` | string (YYYY-MM-DD)
 
 **Exemplo:**
 ```
