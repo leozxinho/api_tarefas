@@ -3,7 +3,7 @@ from sqlalchemy import delete, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 from domain.entities.dto.request.task_request import FilterTaskData, Task
 from domain.entities.dto.response.task_response import TaskResponse
-from app.interface.i_task import ITaskRepository
+from domain.interface.i_task import ITaskRepository
 from infrastructure.database_mysql.task_model import TaskModel
 
 

@@ -182,20 +182,24 @@ pytest tests/usecase/ -v
 
 ```
 api_tarefas/
+├── domain/
+│   ├── entities/
+│   ├── dto/
+│   │   ├── request/
+│   │   └── response/
+│   └── interface/
 ├── app/
 │   ├── controllers/
-│   ├── entities/
-│   │   └── dto/
-│   │       ├── request/
-│   │       └── response/
-│   ├── interface/
 │   ├── middlewares/
 │   ├── usecase/
 │   └── dependencies.py
 ├── infrastructure/
 │   └── database_mysql/
-│       └── repositories/
-│           └── task/
+│       ├── repositories/
+│       │   └── task/
+│       ├── task_model.py
+│       ├── base.py
+│       └── mysql_connection.py
 ├── tests/
 │   ├── middlewares/
 │   └── usecase/
