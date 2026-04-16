@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List
 
-from app.dependencies import get_repository, get_session
+from application.dependencies import get_repository, get_session
 from domain.entities.dto.response.task_response import TaskCreate, TaskResponse
 from domain.entities.dto.request.task_request import FilterTaskData, TaskUpdate
-from app.usecase.task_usecase import CreateTaskUsecase, DeleteTaskUsecase, FilterTaskDataUsecase, ListTaskUsecase, SearchTaskIDUsecase, UpdateTaskUsecase
+from application.usecase.task_usecase import CreateTaskUsecase, DeleteTaskUsecase, FilterTaskDataUsecase, ListTaskUsecase, SearchTaskIDUsecase, UpdateTaskUsecase
 
 
 

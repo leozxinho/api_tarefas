@@ -2,7 +2,7 @@
 import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-from app.middlewares.error_middleware import ErrorMiddleware
+from application.middlewares.error_middleware import ErrorMiddleware
 
 @pytest.fixture
 def app():

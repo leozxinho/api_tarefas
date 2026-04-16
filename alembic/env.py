@@ -5,7 +5,7 @@ from sqlalchemy import pool
 
 from alembic import context
 from infrastructure.database_mysql.mysql_connection import Base
-from app.entities.models.tarefa_model import TaskModel
+from application.entities.models.tarefa_model import TaskModel
 print(f"Tabelas detectadas pelo Alembic: {Base.metadata.tables.keys()}") 
 
 # this is the Alembic Config object, which provides

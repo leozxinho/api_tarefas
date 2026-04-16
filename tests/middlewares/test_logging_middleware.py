@@ -1,7 +1,7 @@
 import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-from app.middlewares.logging_middleware import LoggingMiddleware
+from application.middlewares.logging_middleware import LoggingMiddleware
 
 @pytest.fixture
 def app():

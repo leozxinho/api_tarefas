@@ -1,11 +1,11 @@
 import logging
 import time
 
-from app.controllers import task_controller
+from application.controllers import task_controller
 from fastapi import FastAPI, Request
 
-from app.middlewares.error_middleware import ErrorMiddleware
-from app.middlewares.logging_middleware import LoggingMiddleware
+from application.middlewares.error_middleware import ErrorMiddleware
+from application.middlewares.logging_middleware import LoggingMiddleware
 
 app = FastAPI(
     title="Api de tarefas",
