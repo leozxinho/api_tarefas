@@ -33,5 +33,4 @@ def test_tempo_de_resposta_no_log(client, caplog):
     import logging
     with caplog.at_level(logging.INFO):
         client.get("/test")
-    # verifica que o tempo foi logado (ex: "0.001s")
-    assert "s" in caplog.text
+    assert "duration=" in caplog.text

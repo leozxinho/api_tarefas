@@ -1,6 +1,5 @@
-# app/interface/i_tarefa_repository.py
 from abc import ABC, abstractmethod
-from app.entities.dto.request.task_request import Task
+from domain.entities.dto.request.task_request import Task
 
 class ITaskRepository(ABC):
 

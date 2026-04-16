@@ -3,8 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from typing import List
 
 from app.dependencies import get_repository
-from app.entities.dto.response.task_response import TaskCreate, TaskResponse
-from app.entities.dto.request.task_request import FilterTaskData, TaskUpdate
+from domain.entities.dto.response.task_response import TaskCreate, TaskResponse
+from domain.entities.dto.request.task_request import FilterTaskData, TaskUpdate
 from app.usecase.task_usecase import CreateTaskUsecase, DeleteTaskUsecase, FilterTaskDataUsecase, ListTaskUsecase, SearchTaskIDUsecase, UpdateTaskUsecase
 from infrastructure.database_mysql.mysql_connection import get_session
 

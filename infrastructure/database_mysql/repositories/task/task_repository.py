@@ -1,8 +1,8 @@
 # infrastructure/database_mysql/repositories/task_repository.py
 from sqlalchemy import delete, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
-from app.entities.dto.request.task_request import FilterTaskData, Task
-from app.entities.dto.response.task_response import TaskResponse
+from domain.entities.dto.request.task_request import FilterTaskData, Task
+from domain.entities.dto.response.task_response import TaskResponse
 from app.interface.i_task import ITaskRepository
 from infrastructure.database_mysql.task_model import TaskModel
 

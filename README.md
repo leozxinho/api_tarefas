@@ -1,25 +1,24 @@
 # 📌 API de Tarefas
 
-API para gerenciamento de tarefas utilizando arquitetura em camadas (Router → UseCase → Repository).
+API REST para gerenciamento de tarefas construída com FastAPI, seguindo os princípios da **Clean Architecture**.
 
 ---
 
 ## 🔗 Endpoints
 
+Base URL: `/api/v1`
+
 ### 📄 Listar todas as tarefas
 
 **GET** `/tarefas`
 
-Retorna todas as tarefas cadastradas.
-
 **Response:**
-
 ```json
 [
   {
     "id": 1,
     "titulo": "Estudar",
-    "descricao": "Revisar FastAPI",
+    "descricao": "Clean Architecture",
     "concluido": true,
     "created_at": "2026-04-10",
     "update_at": "2026-04-10"
@@ -33,17 +32,16 @@ Retorna todas as tarefas cadastradas.
 
 **GET** `/tarefas/data`
 
-Filtra tarefas com base em critérios de data.
+**Query Params:**
 
-**Query Params (via Depends):**
-
-* `data_inicio` (opcional)
-* `data_fim` (opcional)
+| Param | Tipo | Obrigatório |
+|---|---|---|
+| `data_inicio` | string (YYYY-MM-DD) | Não |
+| `data_fim` | string (YYYY-MM-DD) | Não |
 
 **Exemplo:**
-
 ```
-/tarefas/data?data_inicio=2026-04-01&data_fim=2026-04-10
+GET /api/v1/tarefas/data?data_inicio=2026-04-01&data_fim=2026-04-10
 ```
 
 ---
@@ -52,24 +50,19 @@ Filtra tarefas com base em critérios de data.
 
 **GET** `/tarefas/{id}`
 
-Retorna uma tarefa específica.
-
-**Parâmetros:**
-
-* `id` (int)
-
 **Response:**
-
 ```json
-  {
-    "id": 1,
-    "titulo": "Estudar",
-    "descricao": "Revisar FastAPI",
-    "concluido": true,
-    "created_at": "2026-04-10",
-    "update_at": "2026-04-10"
-  }
+{
+  "id": 1,
+  "titulo": "Estudar",
+  "descricao": "Clean Architecture",
+  "concluido": true,
+  "created_at": "2026-04-10",
+  "update_at": "2026-04-10"
+}
 ```
+
+> Retorna `404` se a tarefa não for encontrada.
 
 ---
 
@@ -77,25 +70,21 @@ Retorna uma tarefa específica.
 
 **POST** `/tarefas`
 
-Cria uma nova tarefa.
-
 **Body:**
-
 ```json
 {
   "titulo": "Nova tarefa",
-  "descricao": "Descrição da tarefa",
+  "descricao": "Descrição da tarefa"
 }
 ```
 
-**Response:**
-
+**Response:** `200`
 ```json
 {
   "id": 1,
-  "titulo": "Nova",
-  "descricao": "Tarefa",
-  "concluido": true,
+  "titulo": "Nova tarefa",
+  "descricao": "Descrição da tarefa",
+  "concluido": false,
   "created_at": "2026-04-10T14:35:16",
   "update_at": "2026-04-10T14:35:16"
 }
@@ -107,18 +96,11 @@ Cria uma nova tarefa.
 
 **PUT** `/tarefas/{id}`
 
-Atualiza uma tarefa existente.
-
-**Parâmetros:**
-
-* `id` (int)
-
 **Body:**
-
 ```json
 {
-  "titulo": "Nova",
-  "descricao": "Tarefa",
+  "titulo": "Título atualizado",
+  "descricao": "Nova descrição",
   "concluido": true
 }
 ```
@@ -129,14 +111,7 @@ Atualiza uma tarefa existente.
 
 **DELETE** `/tarefas/{id}`
 
-Remove uma tarefa do sistema.
-
-**Parâmetros:**
-
-* `id` (int)
-
-**Response:**
-
+**Response:** `200`
 ```json
 {
   "detail": "Tarefa excluída com sucesso."
@@ -145,30 +120,85 @@ Remove uma tarefa do sistema.
 
 ---
 
-## 🧠 Arquitetura
-
-A API segue uma separação clara de responsabilidades:
-
-* **Router** → Define os endpoints
-* **UseCase** → Contém as regras de negócio
-* **Repository** → Responsável pelo acesso ao banco
-* **Session (AsyncSession)** → Gerencia a conexão com o banco de dados
-
----
-
 ## ⚙️ Tecnologias
 
-* FastAPI
-* SQLAlchemy (Async)
-* Python 3.10+
+| Tecnologia | Uso |
+|---|---|
+| FastAPI | Framework web |
+| SQLAlchemy Async | ORM assíncrono |
+| MySQL | Banco de dados |
+| Alembic | Migrations |
+| Pytest | Testes automatizados |
+| Python 3.10+ | Linguagem |
 
 ---
 
-## 🚀 Observações
+## 🚀 Como rodar
 
-* Todas as operações são assíncronas
-* Uso de `Depends` para injeção de dependências
-* Código organizado para fácil manutenção e escalabilidade
+**1. Clone o repositório e instale as dependências:**
+```bash
+git clone <repo>
+cd api_tarefas
+pip install -r requirements.txt
+```
+
+**2. Configure o `.env`:**
+```env
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=sua_senha
+DB_NAME=api_tarefas
+```
+
+**3. Rode as migrations:**
+```bash
+alembic upgrade head
+```
+
+**4. Inicie a aplicação:**
+```bash
+uvicorn main:app --reload
+```
 
 ---
 
+## 🧪 Testes
+
+```bash
+# Todos os testes
+pytest tests/ -v
+
+# Apenas middlewares
+pytest tests/middlewares/ -v
+
+# Apenas use cases
+pytest tests/usecase/ -v
+```
+
+---
+
+## 📁 Estrutura do projeto
+
+```
+api_tarefas/
+├── app/
+│   ├── controllers/
+│   ├── entities/
+│   │   └── dto/
+│   │       ├── request/
+│   │       └── response/
+│   ├── interface/
+│   ├── middlewares/
+│   ├── usecase/
+│   └── dependencies.py
+├── infrastructure/
+│   └── database_mysql/
+│       └── repositories/
+│           └── task/
+├── tests/
+│   ├── middlewares/
+│   └── usecase/
+├── main.py
+└── requirements.txt
+```

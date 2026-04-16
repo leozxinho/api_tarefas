@@ -1,4 +1,3 @@
-# app/middlewares/error_middleware.py
 import logging
 
 from starlette.middleware.base import BaseHTTPMiddleware

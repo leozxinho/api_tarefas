@@ -1,7 +1,7 @@
 # app/usecase/task_usecase.py
 from fastapi import HTTPException
-from app.entities.dto.request.task_request import Task, FilterTaskData
-from app.entities.dto.response.task_response import TaskResponse
+from domain.entities.dto.request.task_request import Task, FilterTaskData
+from domain.entities.dto.response.task_response import TaskResponse
 from app.interface.i_task import ITaskRepository
 
 
